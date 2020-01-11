@@ -7,6 +7,7 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
+const helmet = require('helmet');
 
 const db = knex({
     client: 'pg',
@@ -17,6 +18,7 @@ const db = knex({
 });
 
 const app = express();
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(cors());
 
