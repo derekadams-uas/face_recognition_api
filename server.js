@@ -8,6 +8,8 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 const helmet = require('helmet');
+const morgan = require('morgan');
+
 
 const db = knex({
     client: 'pg',
@@ -20,6 +22,7 @@ const db = knex({
 const app = express();
 app.use(helmet());
 app.use(bodyParser.json());
+app.use(morgan('combined'));
 app.use(cors());
 
 app.get('/', (req, res) => { res.send('It is working'); })
